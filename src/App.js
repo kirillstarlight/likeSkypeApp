@@ -1,16 +1,18 @@
-import { React } from 'react';
+import React, { Component } from 'react';
 
 import './App.css';
-import Sidebar from './components/main';
-import Main from './components/main';
+import Sidebar from './components/sidebar/sidebar';
+import Main from './components/main/main';
 
-const  App = () = {
+class App extends Component{
+  render() {
     return (
       <div className="App">
-        <Sidebar/>
-        <Main/>
+        <Sidebar />
+        <Main />
       </div>
     );
+  }
 }
 
 export default App;
