@@ -1,15 +1,14 @@
-import React, { Component } from 'react';
+import React from 'react';
 import './sidebar.css';
 import User from '../user/user';
 
-class Sidebar extends Component {
-  render() {
-    return (
-      <aside className="sidebar" >
-        Sidebar
-      </aside>
-    );
-  }
+const Sidebar = ({ contacts }) => {
+  return (
+    <aside className="sidebar">
+      {console.log(this.props)}
+      {contacts.map(contact => <User user={contact} key={contact.user_id} />)}
+    </aside>);
 }
+
 
 export default Sidebar;
