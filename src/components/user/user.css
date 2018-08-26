@@ -1,9 +1,0 @@
-img {
-  border-radius: 50%;
-  float: left;
-  size: 50px;
-}
-
-.user__details {
-  display: grid;
-}
