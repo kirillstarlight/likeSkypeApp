@@ -1,8 +1,7 @@
 import { createStore } from 'redux';
 import { devToolsEnhancer } from 'redux-devtools-extension';
-import reducer from '../reducers/reducer';
-import { contacts } from '../static-data';
+import combined from '../reducers/index';
 
-const store = createStore(reducer, contacts, devToolsEnhancer());
+const store = createStore(combined, devToolsEnhancer());
 
 export default store;
