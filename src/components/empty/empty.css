@@ -11,7 +11,8 @@
 }
 
 .empty__status,
-.empty__name{
+.empty__name,
+.empty__info{
   padding: 1rem;
 }
 

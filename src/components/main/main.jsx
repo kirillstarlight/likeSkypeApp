@@ -1,6 +1,6 @@
 import React from 'react';
 import Empty from '../empty/empty';
-import ChatWindow from '../chat-window/chat-window';
+import ChatWindow from '../../containers/chat-window/chat-window';
 import './main.css';
 
 const Main = ({ user, activeUserId }) => {

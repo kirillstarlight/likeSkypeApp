@@ -11,7 +11,6 @@ class App extends Component {
     const { contacts, user, activeUserId } = store.getState();
     return (
       <div className="App">
-        {console.log(contacts)}
         <Sidebar contacts={_.values(contacts)} />
         <Main user={user} activeUserId={activeUserId} />
       </div>

@@ -9,7 +9,7 @@ const Empty = ({ user, activeUserId }) => {
     <div className="empty">
       <h1 className="empty__first-name">
         Welcome,
-        {firstName}
+        {` ${firstName}`}
       </h1>
       <img src={profilePic} alt={name} className="empty__profile-pic" />
       <p className="empty__status">
