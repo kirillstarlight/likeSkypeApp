@@ -1,0 +1,40 @@
+.empty{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+}
+
+.empty__name{
+  color: #fff;
+}
+
+.empty__status,
+.empty__name{
+  padding: 1rem;
+}
+
+.empty__status{
+  color: #fff;
+  border-bottom: 1px solid #fff;
+}
+
+.empty__profile-pic{
+  border-radius: 50%;
+  margin: 2rem 0;
+}
+
+.empty__btn{
+  padding: 1rem;
+  margin: 1rem;
+  font-weight: bold;
+  font-size: 1.2rem;
+  border-radius: 50px;
+  outline: 0;
+}
+
+.empty__btn:hover{
+  background-color: #fff;
+  cursor: pointer;
+}
