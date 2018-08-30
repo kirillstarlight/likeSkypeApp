@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Component } from 'react';
 import './chats.css';
 
 const Chat = ({ message }) => {
@@ -8,15 +8,32 @@ const Chat = ({ message }) => {
   );
 };
 
-const Chats = ({ messages }) => {
-  const currentMessages = messages;
-  return (
-    <div className="chats">
-      {currentMessages.map(message => (
-        <Chat message={message} key={message.number} />
-      ))}
-    </div>
-  );
-};
+class Chats extends Component {
+  scrollToBottom = () => {
+    this.messagesEnd.scrollIntoView({ behavior: "smooth" });
+  }
+  
+  componentDidMount() {
+    this.scrollToBottom();
+  }
+  
+  componentDidUpdate() {
+    this.scrollToBottom();
+  }
+
+  render() {
+    const { messages } = this.props;
+    return (
+      <div className="chats">
+        {messages.map(message => (
+          <Chat message={message} key={message.number} />
+        ))}
+        <div style={{ float:"left", clear: "both" }}
+          ref={(el) => { this.messagesEnd = el; }}>
+        </div>
+      </div>
+    );
+  }
+}
 
 export default Chats;
