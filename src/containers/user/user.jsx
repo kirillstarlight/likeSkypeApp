@@ -12,7 +12,6 @@ const User = ({ user }) => {
 
   return (
     <div className="user" onClick={handleUserClick.bind(null, user)} role="button" tabIndex="0">
-      {console.log(name)}
       <img src={profilePic} alt={name} className="user__pic" />
       <div className="user__details">
         <p className="user__details-name">{name}</p>

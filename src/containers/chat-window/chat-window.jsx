@@ -4,16 +4,17 @@ import _ from 'lodash';
 import Header from '../../components/header/header';
 import Input from '../input/input';
 import Chats from '../../components/chats/chats';
-import { state } from '../../static-data';
+import store from '../../store/store';
 
 const ChatWindow = ({ activeUserId }) => {
-  const activeMsgs = state.messages[activeUserId];
-  const { typing } = state;
+  const activeMsgs = store.getState().messages[activeUserId];
+  console.log(`messages that store in state: ${_.values(activeMsgs)}`);
+
   return (
     <div className="chat-window">
       <Header user={activeUserId} />
       <Chats messages={_.values(activeMsgs)} />
-      <Input value={typing} />
+      <Input />
     </div>
   );
 };

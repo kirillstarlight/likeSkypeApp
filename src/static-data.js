@@ -3,13 +3,46 @@ const txtgen = require('txtgen'); // txtgen.sentence() returns random "readable"
 const faker = require('faker'); // faker is used for generating random fake data.
 const _ = require('lodash'); // lodash is a utility lib for Javascript
 
+/**
+ * @returns {Object} - a new user object
+ */
+export function generateUser() {
+  return {
+    name: faker.name.findName(),
+    email: faker.internet.email(),
+    profilePic: faker.internet.avatar(),
+    status: txtgen.sentence(),
+    userId: shortid.generate(),
+  };
+}
+
+/**
+ * @returns {Object} - a new message object
+ */
+function generateMsg(number) {
+  return {
+    number,
+    text: txtgen.sentence(),
+    isUserMsg: faker.random.boolean(),
+  };
+}
+
+function generateUsers(numberOfUsers) {
+  return Array.from({ length: numberOfUsers }, () => generateUser());
+}
+
+function generateMsgs(numberOfMsgs) {
+  return Array.from({ length: numberOfMsgs }, (v, i) => generateMsg(i));
+}
+
 const users = generateUsers(10);
-export const contacts = _.mapKeys(users, "userId");
-export const getMessages = messagesPerUser => {
-  let messages = {};
-  _.forEach(users, user => {
+export const contacts = _.mapKeys(users, 'userId');
+
+export const getMessages = (messagesPerUser) => {
+  const messages = {};
+  _.forEach(users, (user) => {
     messages[user.userId] = {
-      ..._.mapKeys(generateMsgs(messagesPerUser), "number")
+      ..._.mapKeys(generateMsgs(messagesPerUser), 'number'),
     };
   });
   return messages;
@@ -25,37 +58,8 @@ export const state = {
 };
 
 /**
- * @returns {Object} - a new user object
- */
-export function generateUser() {
-  return {
-    name: faker.name.findName(),
-    email: faker.internet.email(),
-    profilePic: faker.internet.avatar(),
-    status: txtgen.sentence(),
-    userId: shortid.generate(),
-  };
-}
-/**
- * @returns {Object} - a new message object
- */
-function generateMsg(number) {
-  return {
-    number,
-    text: txtgen.sentence(),
-    isUserMsg: faker.random.boolean(),
-  };
-}
-/**
  *
  * @param {Number} numberOfUsers - the number of users to be generated
  * @param {Function} generateUser - function that generates a single user
  * @returns {Array} - an array of user objects with length n = numberOfUsers
  */
-function generateUsers(numberOfUsers) {
-  return Array.from({ length: numberOfUsers }, () => generateUser());
-}
-
-function generateMsgs(numberOfMsgs) {
-  return Array.from({ length: numberOfMsgs }, (v, i) => generateMsg(i));
-}
